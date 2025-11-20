@@ -31,7 +31,10 @@ export default function Home() {
       <input
         type="file"
         accept="application/pdf"
-        onChange={(e) => setFile(e.target.files[0])}
+        onChange={(e) => {
+        if (!e.target.files || e.target.files.length === 0) return;
+          setFile(e.target.files[0]);
+            }}
       />
 
       <button

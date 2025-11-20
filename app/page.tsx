@@ -3,8 +3,9 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [file, setFile] = useState(null);
-  const [result, setResult] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [result, setResult] = useState<any>(null);
+  //const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const uploadPDF = async () => {
@@ -14,7 +15,8 @@ export default function Home() {
 
     const formData = new FormData();
     formData.append("file", file);
-    const res = await fetch("https://nutrient-extract-9uay57hf0-ronald-turyatembas-projects.vercel.app", {
+
+    const res = await fetch("http://localhost:8000/extract", {
       method: "POST",
       body: formData,
     });
@@ -29,13 +31,10 @@ export default function Home() {
       <h1>PDF Allergen & Nutrition Extractor</h1>
 
       <input
-        type="file"
-        accept="application/pdf"
-        onChange={(e) => {
-        if (!e.target.files || e.target.files.length === 0) return;
-          setFile(e.target.files[0]);
-            }}
-      />
+  type="file"
+  accept="application/pdf"
+  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+        />
 
       <button
         onClick={uploadPDF}

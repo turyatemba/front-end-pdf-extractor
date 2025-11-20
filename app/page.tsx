@@ -14,8 +14,7 @@ export default function Home() {
 
     const formData = new FormData();
     formData.append("file", file);
-
-    const res = await fetch("http://localhost:8000/extract", {
+    const res = await fetch("https://nutrient-extract-9uay57hf0-ronald-turyatembas-projects.vercel.app", {
       method: "POST",
       body: formData,
     });

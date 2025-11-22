@@ -16,7 +16,7 @@ export default function Home() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("http://localhost:8000/extract", {
+    const res = await fetch("https://pdf-ocr-text-extractor.onrender.com/extract", {
       method: "POST",
       body: formData,
     });

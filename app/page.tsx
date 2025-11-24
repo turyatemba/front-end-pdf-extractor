@@ -127,7 +127,7 @@ export default function Home() {
                   {Object.entries(result.nutrition).map(([key, value], i) => (
                     <tr key={i}>
                       <td style={tdStyle}>{key}</td>
-                      <td style={tdStyle}>{value}</td>
+                      <td style={tdStyle}>{String(value)}</td>
                     </tr>
                   ))}
                 </tbody>
